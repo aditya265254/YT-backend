@@ -1,0 +1,15 @@
+{
+  "name": "backend-chai-aur-code",
+  "version": "1.0.0",
+  "description": "backend of a youtub like palateform",
+  "keywords": [
+    "javascirpt"
+  ],
+  "license": "ISC",
+  "author": "Aditya singh",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
