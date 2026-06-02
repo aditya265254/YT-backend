@@ -24,7 +24,7 @@ const userSchema = new Schema (
             required: true,
             trim: true,
         },
-        avtar: {
+        avatar: {
             type: String, // i got string from cloud nary 
             required: true,
         },
