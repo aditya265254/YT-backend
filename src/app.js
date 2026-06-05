@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors"
 import cookieParser from "cookie-parser"
+import dotenv from "dotenv"
+dotenv.config({ path: "./.env" })  // ← path explicitly de 
 
 
 const app = express()
@@ -21,5 +23,6 @@ import userRouter from './routes/user.routes.js'
 
 // router decleration
 app.use("/api/v1/users", userRouter)
+
 
 export { app }

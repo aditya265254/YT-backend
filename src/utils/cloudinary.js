@@ -7,18 +7,26 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const uploadOnCloudnary = async (localStorage) => {
+
+const uploadOnCloudnary = async (localFilePath) => {
   try {
     if (!localFilePath) return null;
     const response = await cloudinary.uploader.upload(localFilePath, {
       resource_type: "auto",
     });
-    console.log("File is uploaded on cloudnary ", response.url);
+    // console.log("File is uploaded on cloudnary ", response.url);
+    fs.unlinkSync(localFilePath)
     return response;
+
   } catch (error) {
-    fs.unlinkSync(localFilePath); //remove the localy saved temprory file as the upload ortion got fail
+    console.error("Cloudinary upload error:", error.message);
+    // Only delete file if it exists
+    if (fs.existsSync(localFilePath)) {
+      fs.unlinkSync(localFilePath);
+    }
     return null;
   }
 };
+
 
 export { uploadOnCloudnary };

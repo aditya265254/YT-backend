@@ -1,4 +1,3 @@
-import { ServerDescription } from "mongodb"
 
 class ApiError extends Error{
     constructor(
