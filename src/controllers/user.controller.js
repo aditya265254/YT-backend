@@ -23,15 +23,8 @@ const generateAccessAndRefreshTokens = async (userId) => {
 };
 
 const registerUser = asyncHandler(async (req, res) => {
-  // get user detail from frontend
-  // validation - not empty
-  // check user alredy exist: email , username
-  // check for img check for avtar
-  // upload to cloudnary and get string
-  // create user object -create  entry i db
-  // remove password and refresh token field from response
-  // check for user creation
-  // return response
+ 
+  
   const { userName, email, fullName, password } = req.body;
   if (
     [userName, email, fullName, password].some((field) => field?.trim() === "")
@@ -40,7 +33,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   const exitedUser = await User.findOne({
-    $or: [{ userName }, { email }],
+    $or: [ { email }],
   });
 
   if (exitedUser) {
@@ -213,7 +206,7 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
 const getCurrentUser = asyncHandler(async (req, res) => {
   return res
     .status(200)
-    .json(200, req.user, "current user fetched successfully");
+    .json(new ApiResponse (200, req.user, "current user fetched successfully"));
 });
 
 const updateAccountDetails = asyncHandler(async (req, res) => {
@@ -256,7 +249,7 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
   ).select("-password");
   return res
     .status(200)
-    .json(new ApiResponse(200, user, "cover image updated sucessfully"));
+    .json(new ApiResponse(200, user, "avatar  updated sucessfully"));
 });
 
 const updateUserCoverImage = asyncHandler(async (req, res) => {
