@@ -20,3 +20,5 @@ export const verifyJWT = asyncHandler(async(req, res, next ) => {
     throw new ApiError(401, error?.message || "invalid acces token ")
    }
 })
+// there is he way we fing the middle ware we are so close to open the middle wate and this is vary imp for the task 
+
